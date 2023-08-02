@@ -14,12 +14,13 @@ export class CalculatorComponent {
   secondNumber: 0,
   result: 0,
   operator: ''
+  
 
   }
 
-  isNext = false;
+  isFirst = false;
   isOperation = false;
-  isEqual = false;
+  isSec = false;
 
   isCheckNumber(value: string): boolean {
     const numericStrings = ['00','0', '1', '2', '3', '4', '5', '6', '7', '8', '9','.'];
@@ -29,7 +30,7 @@ export class CalculatorComponent {
 
   pressNumber(value:string){
 
-    if(!this.isNext ){
+    if(!this.isFirst ){
       if (value!='%')
       {
         this.firstNumberArr.push(value);
@@ -61,7 +62,7 @@ export class CalculatorComponent {
         this.secondNumberArr=[];
       }
 
-      this.isNext=true;
+      this.isFirst=true;
       if (value!='%'){
         this.calculator.operator=value;
       }
@@ -71,8 +72,8 @@ export class CalculatorComponent {
       
     }
    
-    if (this.isNext && this.isCheckNumber(value) ){
-      // this.isNext=true;
+    if (this.isFirst && this.isCheckNumber(value) ){
+      // this.isFirst=true;
       this.secondNumberArr.push(value);
       const combinedString = this.secondNumberArr.join(''); 
       this.calculator.secondNumber = parseFloat(combinedString);
@@ -85,7 +86,7 @@ export class CalculatorComponent {
     }
   }
   delNumber(){
-    if (this.isNext){
+    if (this.isFirst){
       this.secondNumberArr.pop();
       if(this.secondNumberArr.length==0){
         this.calculator.secondNumber=0;
@@ -102,20 +103,20 @@ export class CalculatorComponent {
     }
   }
   getAnswer(){
-    if(!this.isEqual){
+    if(!this.isSec){
       switch (this.calculator.operator)
       { 
-        case '+': this.calculator.result = this.calculator.firstNumber + this.calculator.secondNumber;this.isEqual=true;
+        case '+': this.calculator.result = this.calculator.firstNumber + this.calculator.secondNumber;this.isSec=true;
         break;
 
-        case '-': this.calculator.result = this.calculator.firstNumber - this.calculator.secondNumber;this.isEqual=true;
+        case '-': this.calculator.result = this.calculator.firstNumber - this.calculator.secondNumber;this.isSec=true;
         
         break;
 
-        case '*': this.calculator.result = this.calculator.firstNumber * this.calculator.secondNumber;this.isEqual=true;
+        case '*': this.calculator.result = this.calculator.firstNumber * this.calculator.secondNumber;this.isSec=true;
         break;
 
-        case '/': this.calculator.result = this.calculator.firstNumber / this.calculator.secondNumber;this.isEqual=true;
+        case '/': this.calculator.result = this.calculator.firstNumber / this.calculator.secondNumber;this.isSec=true;
         break; 
       }
     }else {
@@ -144,9 +145,9 @@ export class CalculatorComponent {
       result: 0,
       operator: ''
     }
-    this.isNext = false;
+    this.isFirst = false;
     this.isOperation = false;
-    this.isEqual = false;
+    this.isSec = false;
     this.firstNumberArr = [];
     this.secondNumberArr = [];
   }
