@@ -1,0 +1,42 @@
+<div id="bigContainer">
+    <h1  style="text-align: center; text-transform: uppercase; margin-bottom: 12px;">Calculator</h1>
+    <div class="calculator">
+        <div id="input_cal">
+            <textarea cols="30" rows="10" disabled id="text_in">
+              {{calculator.firstNumber }}
+              {{calculator.secondNumber }}
+              {{calculator.result }}
+            </textarea>
+          </div>
+        <div class="row">
+            <button (click)="clear()">AC</button>
+            <button (click)="pressNumber('%')">%</button>
+            <button (click)="delNumber()">&larr;</button>
+            <button class="divide operator" (click)="pressNumber('/')">/</button>
+        </div>
+        <div class="row">
+            <button (click)="pressNumber('7')">7</button>
+            <button (click)="pressNumber('8')">8</button>
+            <button (click)="pressNumber('9')">9</button>
+            <button class="multiply operator" (click)="pressNumber('*')">*</button>
+        </div>
+        <div class="row">
+            <button (click)="pressNumber('4')">4</button>
+            <button (click)="pressNumber('5')">5</button>
+            <button (click)="pressNumber('6')">6</button>
+            <button class="operator" (click)="pressNumber('-')">-</button>
+        </div>
+        <div class="row">
+            <button (click)="pressNumber('1')">1</button>
+            <button (click)="pressNumber('2')">2</button>
+            <button (click)="pressNumber('3')">3</button>
+            <button class="operator" (click)="pressNumber('+')" >+</button>
+        </div>
+        <div class="row">
+            <button (click)="pressNumber('0')">0</button>
+            <button (click)="pressNumber('00')">00</button>
+            <button (click)="pressNumber('.')">.</button>
+            <button class="operator" (click)="getAnswer()">=</button>
+        </div>
+    </div>
+</div>
